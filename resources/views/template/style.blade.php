@@ -35,6 +35,22 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 <link rel="stylesheet" href="{{asset('css/pict.css')}}">
+
+<script type="text/javascript">
+
+    function alamatI(){
+        var alamati = document.getElementById("alamatI");
+        var alamatp = document.getElementById("alamatP").value;
+
+		if(document.getElementById("cekboxI").checked == true){
+			alamati.readOnly = true;
+            alamati.innerHTML = alamatp;
+		}else{
+			alamati.readOnly = false;
+            alamati.innerHTML = " ";
+		}
+    }
+</script>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -98,6 +114,31 @@
          autoclose: true
      })
 })
+
+$(document).ready(function(){
+
+    $('#cekboxA').click(function(){
+        var alamatp = $('#alamatP').val();
+        if ($('#cekboxA').is(':checked')){
+            $('#alamatA').attr('readonly',true);
+            $('#alamatA').val(alamatp);
+        }else if ($('#cekboxA').is(':not(:checked)')) {
+            $('#alamatA').attr('readonly',false);
+            $('#alamatA').val('');
+        }
+    });
+
+    $('#cekboxI').click(function(){
+        var alamatp = $('#alamatP').val();
+        if ($('#cekboxI').is(':checked')){
+            $('#alamatI').attr('readonly',true);
+            $('#alamatI').val(alamatp);
+        }else if ($('#cekboxI').is(':not(:checked)')) {
+            $('#alamatI').attr('readonly',false);
+            $('#alamatI').val('');
+        }
+    });
+});
 </script>
 </body>
 </html>

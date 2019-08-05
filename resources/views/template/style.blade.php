@@ -27,6 +27,10 @@
   <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/datatables.net/css/jquery.dataTables.min.css')}}">
+  <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/datatables.net/css/buttons.dataTables.min.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,8 +108,19 @@
 <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script>
 <!--pict js-->
 <script type="text/javascript" src="{{asset('js/pict.js')}}"></script>
+<!--datatables-->
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/jszip.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/pdfmake.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/vfs_fonts.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('AdminLTE/bower_components/datatables.net/js/buttons.print.min.js')}}"></script>
 
 <script>
+//date picker
  $(function () {
      $('#datepicker').datepicker({
          autoclose: true
@@ -115,6 +130,7 @@
      })
 })
 
+//assesment alamat checkbox
 $(document).ready(function(){
 
     $('#cekboxA').click(function(){
@@ -138,6 +154,19 @@ $(document).ready(function(){
             $('#alamatI').val('');
         }
     });
+});
+//datatables
+$(function () {
+  $('#example1').DataTable({
+    dom: 'Bfrtip',
+    buttons:[
+      {extend:'excelHtml5',
+       title:'Assesment Export'},
+      {extend:'pdfHtml5',
+       title:'Assesment Export'},
+       'print'],
+       select:true
+  });
 });
 </script>
 </body>

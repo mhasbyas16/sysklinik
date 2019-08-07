@@ -17,3 +17,6 @@ Route::get('/', function () {
 Route::get('/assesment', function () {
     return view('main_menu.assesment');
 });
+Route::get('/absensi', function () {
+    return view('main_menu.absensi');
+});

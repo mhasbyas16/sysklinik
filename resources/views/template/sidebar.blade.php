@@ -41,7 +41,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="active"><a href="{{url('/assesment')}}"><i class="fa fa-circle-o"></i> Assesment</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Absensi</a></li>
+          <li><a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Jadwal Terapi</a></li>
         </ul>
       </li>

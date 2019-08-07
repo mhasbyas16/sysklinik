@@ -122,10 +122,7 @@
 <script>
 //date picker
  $(function () {
-     $('#datepicker').datepicker({
-         autoclose: true
-     })
-     $('#datedaftar').datepicker({
+     $('#datepicker, #datedaftar').datepicker({
          autoclose: true
      })
 })
@@ -155,7 +152,7 @@ $(document).ready(function(){
         }
     });
 });
-//datatables
+//datatables assesment
 $(function () {
   $('#example1').DataTable({
     dom: 'Bfrtip',
@@ -168,6 +165,33 @@ $(function () {
        select:true
   });
 });
+
+/* Absensi */
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = parseInt( $('#min').val(), 10 );
+        var max = parseInt( $('#max').val(), 10 );
+        var age = parseFloat( data[4] ) || 0; // use data for the age column
+
+        if ( ( isNaN( min ) && isNaN( max ) ) ||
+             ( isNaN( min ) && age <= max ) ||
+             ( min <= age   && isNaN( max ) ) ||
+             ( min <= age   && age <= max ) )
+        {
+            return true;
+        }
+        return false;
+    }
+);
+
+$(document).ready(function() {
+    var table = $('#example_P,#example_K,#example_T').DataTable();
+
+    // Event listener to the two range filtering inputs to redraw on input
+    $('#max').on('keyup click change', function() {
+        table.draw();
+    } );
+} );
 </script>
 </body>
 </html>

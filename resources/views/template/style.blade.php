@@ -163,8 +163,8 @@ $(function () {
        title:'Assesment Export'},
        'print'],
        select:true
-  });
-});
+  })
+})
 
 /* Absensi */
 $.fn.dataTable.ext.search.push(

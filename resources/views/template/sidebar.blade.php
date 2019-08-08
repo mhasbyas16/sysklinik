@@ -3,7 +3,7 @@
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- Sidebar user panel -->
-    <div class="user-panel">
+    <!--<div class="user-panel">
       <div class="pull-left image">
         <img src="{{asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
       </div>
@@ -11,7 +11,7 @@
         <p>Alexander Pierce</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
-    </div>
+    </div>-->
     <!-- search form
     <form action="#" method="get" class="sidebar-form">
       <div class="input-group">
@@ -22,30 +22,34 @@
             </span>
       </div>
     </form>
-    <!-- /.search form -->
+
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">MAIN NAVIGATION</li>
-      <li class="active">
+      <li class="{{Request::is('/')?'active':''}}">
           <a href="{{url('/')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
       </li>
-      <li class="active treeview">
+      <li class="treeview {{Request::is('registerlist','absensi','jadwalterapi','jadwaleval')?'active':''}}">
         <a href="#">
-          <i class="fa fa-files-o"></i>
+          <i class="glyphicon glyphicon-inbox "></i>
           <span>Main Menu</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="{{url('/assesment')}}"><i class="fa fa-circle-o"></i> Assesment</a></li>
-          <li><a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Jadwal Terapi</a></li>
+          <li class="{{Request::is('registerlist')?'active':''}}">
+            <a href="{{url('/registerlist')}}"><i class="fa fa-circle-o"></i> Register List</a></li>
+          <li class="{{Request::is('absensi')?'active':''}}">
+            <a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>
+          <li class="{{Request::is('jadwalterapi')?'active':''}}">
+            <a href="{{url('/jadwalterapi')}}"><i class="fa fa-circle-o"></i> Jadwal Terapi</a></li>
+          <li class="{{Request::is('jadwaleval')?'active':''}}">
+            <a href="{{url('/jadwaleval')}}"><i class="fa fa-circle-o"></i> Jadwal Evaluasi</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview {{Request::is('pegawai','terapis','terapi','pasien')?'active':''}}">
         <a href="#">
           <i class="fa fa-th"></i>
           <span>Data Master</span>
@@ -54,40 +58,65 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Pegawai</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Terapis</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Jenis Terapi</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Pasien</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Alat Terapi</a></li>
+          <li class="{{Request::is('pegawai')?'active':''}}">
+           <a href="{{url('/pegawai')}}"><i class="fa fa-circle-o"></i> Pegawai</a></li>
+          <li class="{{Request::is('terapis')?'active':''}}">
+           <a href="{{url('/terapis')}}"><i class="fa fa-circle-o"></i> Terapis</a></li>
+          <li class="{{Request::is('terapi')?'active':''}}">
+           <a href="{{url('/terapi')}}"><i class="fa fa-circle-o"></i> Jenis Terapi</a></li>
+          <li class="{{Request::is('pasien')?'active':''}}">
+           <a href="{{url('/pasien')}}"><i class="fa fa-circle-o"></i> Pasien</a></li>
         </ul>
       </li>
-      <li>
-          <a href="#">
-            <i class="fa fa-file"></i> <span>Billing</span>
+      <li class="{{Request::is('billing')?'active':''}}">
+          <a href="{{url('/billing')}}">
+            <i class="glyphicon glyphicon-list-alt"></i> <span>Billing</span>
           </a>
       </li>
-      <li class="">
-          <a href="#">
+      <li class="{{Request::is('rekamedis')?'active':''}}">
+          <a href="{{url('/rekamedis')}}">
             <i class="fa fa-plus-square"></i> <span>Rekam medis</span>
           </a>
       </li>
-      <li>
-          <a href="#">
-            <i class="fa fa-money"></i> <span>Keuangan</span>
+      <li class="treeview {{Request::is('transkeu','keuangan')?'active':''}}">
+        <a href="#">
+          <i class="glyphicon glyphicon-tags"></i>
+          <span>Keuangan</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="{{Request::is('transkeu')?'active':''}}">
+            <a href="{{url('/transkeu')}}"><i class="fa fa-circle-o"></i>Transaksi</a></li>
+          <li class="{{Request::is('keuangan')?'active':''}}">
+            <a href="{{url('/keuangan')}}"><i class="fa fa-circle-o"></i>Laporan Keuangan</a></li>
+        </ul>
+      </li>
+      <li class="{{Request::is('payroll')?'active':''}}">
+          <a href="{{url('/payroll')}}">
+            <i class="fa fa-university"></i> <span>Payroll</span>
           </a>
       </li>
-      <li>
-          <a href="#">
-            <i class="fa fa-university"></i> <span>Koperasi</span>
-          </a>
+      <li class="treeview {{Request::is('alatterapi','transalat','persediaan')?'active':''}}">
+        <a href="#">
+          <i class="glyphicon glyphicon-briefcase"></i>
+          <span>Alat Terapi</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="{{Request::is('alatterapi')?'active':''}}">
+            <a href="{{url('/alatterapi')}}"><i class="fa fa-circle-o"></i> Alat Terapi</a></li>
+          <li class="{{Request::is('transalat')?'active':''}}">
+            <a href="{{url('/transalat')}}"><i class="fa fa-circle-o"></i> Transaksi</a></li>
+          <li class="{{Request::is('persediaan')?'active':''}}">
+            <a href="{{url('/persediaan')}}"><i class="fa fa-circle-o"></i> Persediaan</a></li>
+        </ul>
       </li>
-      <li>
-          <a href="#">
-            <i class="fa fa-file-text"></i> <span>Report</span>
-          </a>
-      </li>
-      <li>
-          <a href="#">
+      <li class="{{Request::is('setting')?'active':''}}">
+          <a href="{{url('/setting')}}">
             <i class="fa fa-wrench"></i> <span>Setting</span>
           </a>
       </li>

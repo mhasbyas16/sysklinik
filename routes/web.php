@@ -14,9 +14,8 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/assesment', function () {
-    return view('main_menu.assesment');
-});
+//Register list
+Route::get('/register-list','registerlistController@registerlist');
 Route::get('/absensi', function () {
     return view('main_menu.absensi');
 });

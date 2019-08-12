@@ -40,7 +40,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="{{Request::is('registerlist')?'active':''}}">
-            <a href="{{url('/registerlist')}}"><i class="fa fa-circle-o"></i> Register List</a></li>
+            <a href="{{url('/register-list')}}"><i class="fa fa-circle-o"></i> Register List</a></li>
           <li class="{{Request::is('absensi')?'active':''}}">
             <a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>
           <li class="{{Request::is('jadwalterapi')?'active':''}}">

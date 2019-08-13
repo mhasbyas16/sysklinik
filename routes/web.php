@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 //Register list
 Route::get('/register-list','registerlistController@registerlist');
+Route::get('/register-list/{id}','registerlistController@registerlistdata');
+Route::post('/register-list/update','registerlistController@registerlistupdate');
 Route::get('/absensi', function () {
     return view('main_menu.absensi');
 });

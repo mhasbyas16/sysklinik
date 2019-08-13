@@ -30,7 +30,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
       </li>
-      <li class="treeview {{Request::is('registerlist','absensi','jadwalterapi','jadwaleval')?'active':''}}">
+      <li class="treeview {{$TV_mainmenu}}">
         <a href="#">
           <i class="glyphicon glyphicon-inbox "></i>
           <span>Main Menu</span>
@@ -39,7 +39,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{Request::is('registerlist')?'active':''}}">
+          <li class="{{$register}}">
             <a href="{{url('/register-list')}}"><i class="fa fa-circle-o"></i> Register List</a></li>
           <li class="{{Request::is('absensi')?'active':''}}">
             <a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>

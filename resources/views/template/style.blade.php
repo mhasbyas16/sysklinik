@@ -122,8 +122,9 @@
 <script>
 //date picker
  $(function () {
-     $('#datepicker, #datedaftar').datepicker({
-         autoclose: true
+     $('#datepicker, #datedaftar, #tgl_mulai, #tgl_selesai').datepicker({
+         autoclose: true,
+         format:'yyyy-mm-dd'
      })
 })
 

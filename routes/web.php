@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Dashboard
 Route::get('/', function () {
     return view('index');
 });
@@ -18,6 +18,6 @@ Route::get('/', function () {
 Route::get('/register-list','registerlistController@registerlist');
 Route::get('/register-list/{id}','registerlistController@registerlistdata');
 Route::post('/register-list/update','registerlistController@registerlistupdate');
-Route::get('/absensi', function () {
-    return view('main_menu.absensi');
-});
+
+//Absensi
+Route::get('/absensi','absensiController@absensi');

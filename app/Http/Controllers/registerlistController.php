@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 use DB;
+
 class registerlistController extends Controller
 {
     public function registerlist(){
@@ -13,6 +14,7 @@ class registerlistController extends Controller
       ->leftJoin('assessment','register_list.id_asses','=','assessment.id_asses')
       ->join('daftar','daftar.id_daftar','=','register_list.id_daftar')->get();
 
+      //sidebar
       $TV_mainmenu='active';
       $register='active';
 
@@ -27,8 +29,23 @@ class registerlistController extends Controller
       ->select('daftar.*','register_list.status as statusR')
       ->join('register_list','register_list.id_daftar','=','daftar.id_daftar')
       ->where('daftar.id_daftar',$id)->first();
+      //lahir
+      $tgl_lahir=explode('-',$data->tgl_lahir);
+      $tahun=$tgl_lahir[0];
+      $bulan=$tgl_lahir[1];
+      $tahun_now=date('Y');
+      $bulan_now=date('m');
+      if ($bulan_now>=$bulan) {
+        $diff=$tahun_now-$tahun;
+      }else{
+        $diff=$tahun_now-$tahun-1;
+      }
+      $umur=$diff;
+
       $kar=DB::table('karyawan')->orderBy('nama','asc')->get();
       $j_terapi=DB::table('jenis_terapi')->orderBY('terapi','asc')->get();
+
+      //sidebar
       $TV_mainmenu='active';
       $register='active';
 
@@ -38,7 +55,8 @@ class registerlistController extends Controller
         'data'=>$data,
         'kar'=>$kar,
         'j_terapi'=>$j_terapi,
-        'id'=>$id
+        'id'=>$id,
+        'umur'=>$umur
       ]);
     }
 
@@ -79,13 +97,15 @@ class registerlistController extends Controller
       $status=$req->status;
 
       $id_daftar=$req->id_daftar;
+      $now=date('Y-m-d');
       //id_asses
         $angka=range(0,9);
         shuffle($angka);
-        $id=array_rand($angka,6);
+        $id=array_rand($angka,3);
         $idstring=implode($id);
-        $id_asses=$idstring;
-      $now=date('Y-m-d');
+        $id_asses=$now.$idstring;
+
+
       $data_R=['id_asses'=>$id_asses,'status'=>$status];
       $data_A=[
     'id_asses'=>$id_asses,

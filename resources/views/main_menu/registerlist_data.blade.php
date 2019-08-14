@@ -114,7 +114,7 @@
                       <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Umur</label>
 
                       <div class="col-sm-6">
-                        <input type="text" class="form-control" name="umur" maxlength="3">
+                        <input type="text" class="form-control" name="umur" value="{{$umur}}" maxlength="3">
                       </div>
                     </div>
                 </div>

@@ -13,11 +13,24 @@
         <li><a href="#"><i class="fa fa-files-o"></i> Main Menu</a></li>
         <li class="active">Assesment</li>
       </ol>
-      -->
+    -->
     </section>
+
 
     <!-- Main content -->
     <div class="container">
+      <div class="row">
+          <div class="col-md-10 col-xs-offset-1 ">
+              <div class="panel panel-default">
+                  <div class="panel-heading">Kalender Jadwal Keseluruhan</div>
+
+                  <div class="panel-body">
+                      {!! $calendar->calendar() !!}
+                      {!! $calendar->script() !!}
+                  </div>
+              </div>
+          </div>
+      </div>
       <div>
       <br>
       <!-- Nav tabs -->
@@ -45,46 +58,27 @@
                       <i class="fa fa-bar-chart-o"></i>
                       <h3 class="box-title">Tabel Jadwal Keseluruhan</h3>
                     </div>
-                    
+
                     <!-- /.box-header -->
                     <div class="box-body">
-                      <table id="pegawais" class="table table-bordered table-striped">
+                      <table id="pegawais" class="table table-bordered table-striped text-center">
                         <thead>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>Jam</th>
+                          <th>Terapis</th>
+                          <th>Pasien</th>
+                          <th>Jumlah Sesi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 4.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td> 4</td>
-                          <td>X</td>
-                        </tr>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 5.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td>5</td>
-                          <td>C</td>
-                        </tr>
+
                         </tbody>
                         <tfoot>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>Jam</th>
+                          <th>Terapis</th>
+                          <th>Pasien</th>
+                          <th>Jumlah Sesi</th>
                         </tr>
                         </tfoot>
                       </table>
@@ -92,7 +86,9 @@
                     <!-- /.box-body -->
                   </div>
                 </div>
-              </div>
+              </div><div class="container">
+
+</div>
           </section>
         </div>
 
@@ -106,7 +102,7 @@
                       <i class="fa fa-bar-chart-o"></i>
                       <h3 class="box-title">Tabel Request Jadwal Terapis</h3>
                     </div>
-                    
+
                     <!-- /.box-header -->
                     <div class="box-body">
                       <table id="pegawais" class="table table-bordered table-striped">
@@ -167,7 +163,7 @@
                       <i class="fa fa-bar-chart-o"></i>
                       <h3 class="box-title">Tabel Request Jadwal Pasien</h3>
                     </div>
-                    
+
                     <!-- /.box-header -->
                     <div class="box-body">
                       <table id="pegawais" class="table table-bordered table-striped">

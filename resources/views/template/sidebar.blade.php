@@ -30,7 +30,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
       </li>
-      <li class="treeview {{Request::is('register-list','register-list/*','absensi','jadwalterapi','jadwaleval')?'active':''}}">
+      <li class="treeview {{Request::is('register-list','register-list/*','absensi','absensi/*','jadwal-terapi','jadwaleval')?'active':''}}">
         <a href="#">
           <i class="glyphicon glyphicon-inbox "></i>
           <span>Main Menu</span>
@@ -41,15 +41,15 @@
         <ul class="treeview-menu">
           <li class="{{Request::is('register-list','register-list/*')?'active':''}}">
             <a href="{{url('/register-list')}}"><i class="fa fa-circle-o"></i> Register List</a></li>
-          <li class="{{Request::is('absensi')?'active':''}}">
+          <li class="{{Request::is('absensi','absensi/*')?'active':''}}">
             <a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>
-          <li class="{{Request::is('jadwalterapi')?'active':''}}">
-            <a href="{{url('/jadwalterapi')}}"><i class="fa fa-circle-o"></i> Jadwal Terapi</a></li>
+          <li class="{{Request::is('jadwal-terapi')?'active':''}}">
+            <a href="{{url('/jadwal-terapi')}}"><i class="fa fa-circle-o"></i> Jadwal Terapi</a></li>
           <li class="{{Request::is('jadwaleval')?'active':''}}">
             <a href="{{url('/jadwaleval')}}"><i class="fa fa-circle-o"></i> Jadwal Evaluasi</a></li>
         </ul>
       </li>
-      <li class="treeview {{Request::is('pegawai','terapis','terapi','pasien')?'active':''}}">
+      <li class="treeview {{Request::is('karyawan','data-terapis','data-terapi','data-pasien')?'active':''}}">
         <a href="#">
           <i class="fa fa-th"></i>
           <span>Data Master</span>
@@ -58,14 +58,14 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{Request::is('pegawai')?'active':''}}">
-           <a href="{{url('/pegawai')}}"><i class="fa fa-circle-o"></i> Pegawai</a></li>
-          <li class="{{Request::is('terapis')?'active':''}}">
-           <a href="{{url('/terapis')}}"><i class="fa fa-circle-o"></i> Terapis</a></li>
-          <li class="{{Request::is('terapi')?'active':''}}">
-           <a href="{{url('/terapi')}}"><i class="fa fa-circle-o"></i> Jenis Terapi</a></li>
-          <li class="{{Request::is('pasien')?'active':''}}">
-           <a href="{{url('/pasien')}}"><i class="fa fa-circle-o"></i> Pasien</a></li>
+          <li class="{{Request::is('karyawan')?'active':''}}">
+           <a href="{{url('/karyawan')}}"><i class="fa fa-circle-o"></i>Karyawan</a></li>
+          <li class="{{Request::is('data-terapis')?'active':''}}">
+           <a href="{{url('/data-terapis')}}"><i class="fa fa-circle-o"></i> Terapis</a></li>
+          <li class="{{Request::is('data-terapi')?'active':''}}">
+           <a href="{{url('/data-terapi')}}"><i class="fa fa-circle-o"></i> Jenis Terapi</a></li>
+          <li class="{{Request::is('data-pasien')?'active':''}}">
+           <a href="{{url('/data-pasien')}}"><i class="fa fa-circle-o"></i> Pasien</a></li>
         </ul>
       </li>
       <li class="{{Request::is('billing')?'active':''}}">

@@ -6,6 +6,11 @@
   <title>Klinik Liliput</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <script src="{{asset('AdminLTE/bower_components/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('AdminLTE/bower_components/moment/min/moment.min.js')}}"></script>
+    <script src="{{asset('AdminLTE/bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/fullcalendar/dist/fullcalendar.min.css')}}"/>
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
@@ -31,7 +36,9 @@
   <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/datatables.net/css/jquery.dataTables.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminLTE/bower_components/datatables.net/css/buttons.dataTables.min.css')}}">
-
+  <!--fullcalendar--><!--
+  <link rel="stylesheet" media="print" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+-->
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -68,9 +75,8 @@
 
 </div>
 <!-- ./wrapper -->
+<!--javascript-->
 
-<!-- jQuery 3 -->
-<script src="{{asset('AdminLTE/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('AdminLTE/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -90,7 +96,6 @@
 <!-- jQuery Knob Chart -->
 <script src="{{asset('AdminLTE/bower_components/jquery-knob/dist/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->
-<script src="{{asset('AdminLTE/bower_components/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- datepicker -->
 <script src="{{asset('AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
@@ -118,6 +123,7 @@
 <script src="{{asset('AdminLTE/bower_components/datatables.net/js/vfs_fonts.js')}}"></script>
 <script src="{{asset('AdminLTE/bower_components/datatables.net/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('AdminLTE/bower_components/datatables.net/js/buttons.print.min.js')}}"></script>
+
 
 <script>
 //date picker
@@ -186,7 +192,16 @@ $.fn.dataTable.ext.search.push(
 );
 
 $(document).ready(function() {
-    var table = $('#example_P,#example_K,#example_T').DataTable();
+    var table = $('#example_P,#example_K,#example_T,#pegawais,#pasiens,#terapiss,#terapi').DataTable({
+      dom: 'Bfrtip',
+      buttons:[
+        {extend:'excelHtml5',
+         title:'Assesment Export'},
+        {extend:'pdfHtml5',
+         title:'Assesment Export'},
+         'print'],
+         select:true
+    });
 
     // Event listener to the two range filtering inputs to redraw on input
     $('#max').on('keyup click change', function() {

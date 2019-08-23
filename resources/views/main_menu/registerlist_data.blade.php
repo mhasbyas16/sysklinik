@@ -26,7 +26,7 @@
             <!-- /.box-header -->
             <form method="post"  action="{{url('/register-list/update')}}" enctype="multipart/form-data" class="form-horizontal">
               {{csrf_field()}}
-              <input type="text" value="{{$id}}" name="id_daftar" hidden/>
+              <input type="text" value="{{$id}}" name="id_pasien" hidden/>
             <div class="box-body">
               <div class="row">
                       <div class="col-xs-7 col-md-12 text-left">
@@ -88,7 +88,7 @@
                       <label class="col-sm-4 control-label" style="text-align: left; padding-left: 20pt">Tempat Lahir</label>
 
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" name="tempat_lahir">
+                        <input type="text" class="form-control" value="{{$data->tempat_lahir}}" name="tempat_lahir" required>
                       </div>
                     </div>
                 </div>
@@ -148,9 +148,32 @@
                     </div>
                 </div>
                 <!-- ./col -->
+                <div class="col-xs-7 col-md-4 text-center">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label" style="text-align: left; padding-left: 20pt">Agama</label>
 
+                      <div class="col-sm-9" style="padding-left: 30pt">
+                          <select class="form-control select2" style="width: 100%;" name="agama" value=" ">
+                            <option value="{{$data->agama}}" hidden>{{$data->agama}}</option>
+                            <option value="I">Islam</option>
+                            <option value="KP">Kristen Protestan</option>
+                          </select>
+                      </div>
+                    </div>
+                </div>
               </div>
               <!-- /.row -->
+              <div class="row">
+                <div class="col-xs-7 col-md-8 text-center">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" style="text-align: left; padding-left: 20pt">Keluhan</label>
+
+                      <div class="col-sm-10">
+                          <textarea class="form-control" rows="3" name="keluhan">{{$data->keluhan}}</textarea>
+                      </div>
+                    </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-xs-7 col-md-5 text-center">
                     <div class="form-group">
@@ -213,7 +236,7 @@
 
                               <div class="col-sm-9" style="padding-left: 30pt">
                                   <select class="form-control select2" style="width: 100%;" name="agama_A" value=" ">
-                                    <option value=" " hidden>-- Select One --</option>
+                                    <option value="{{$data->agama_ayah}}" hidden>{{$data->agama_ayah}}</option>
                                     <option value="I">Islam</option>
                                     <option value="KP">Kristen Protestan</option>
                                   </select>
@@ -226,7 +249,7 @@
                               <label class="col-sm-2 control-label" style="text-align: left; padding-left: 155pt">Alamat</label>
 
                               <div class="col-sm-7" style="padding-left: 47pt; padding-right: 0pt">
-                                  <textarea class="form-control" id="alamatA" rows="3" name="alamat_A"></textarea>
+                                  <textarea class="form-control" id="alamatA" rows="3" name="alamat_A">{{$data->alamat_ayah}}</textarea>
                                   <input type="checkbox" name="a" value="alamatA" id="cekboxA" style="padding-left: 47pt"/>  Alamat sama dengan pasien
                               </div>
                             </div>
@@ -250,7 +273,7 @@
                               <label class="col-sm-3 control-label" style="text-align: left; padding-left: 153pt">Pend. Terakhir
                               </label>
                               <div class="col-sm-4" style="padding-left: 47pt; padding-top: 0pt">
-                                <input type="text" class="form-control" name="pendTerakhir_A">
+                                <input type="text" class="form-control" value="{{$data->pend_ayah}}" name="pendTerakhir_A">
                               </div>
                         </div>
                       </div>
@@ -320,7 +343,7 @@
 
                               <div class="col-sm-9" style="padding-left: 30pt">
                                   <select class="form-control select2" style="width: 100%;" name="agama_I" value=" ">
-                                    <option value=" " hidden>-- Select One --</option>
+                                    <option value="{{$data->agama_ibu}}" hidden>{{$data->agama_ibu}}</option>
                                     <option value="I">Islam</option>
                                     <option value="KP">Kristen Protestan</option>
                                   </select>
@@ -333,7 +356,7 @@
                               <label class="col-sm-2 control-label" style="text-align: left; padding-left: 153pt">Alamat</label>
 
                               <div class="col-sm-7" style="padding-left: 47pt; padding-right: 0pt">
-                                  <textarea class="form-control" id="alamatI" rows="3" name="alamat_I"></textarea>
+                                  <textarea class="form-control" id="alamatI" rows="3" name="alamat_I">{{$data->alamat_ibu}}</textarea>
                                   <input type="checkbox" name="a" value="alamatI" id="cekboxI" style="padding-left: 47pt"/>  Alamat sama dengan pasien
                               </div>
                             </div>
@@ -347,7 +370,7 @@
                               <label class="col-sm-3 control-label" style="text-align: left; padding-left: 20pt; padding-top: 0pt">Pekerjaan
                               </label>
                               <div class="col-sm-9" style="padding-left: 30pt">
-                                <input type="text" class="form-control" name="pekerjaan_I">
+                                <input type="text" class="form-control" value="{{$data->pekerjaan_ibu}}" name="pekerjaan_I">
                               </div>
                             </div>
                         </div>
@@ -357,7 +380,7 @@
                               <label class="col-sm-3 control-label" style="text-align: left; padding-left: 153pt">Pend. Terakhir
                               </label>
                               <div class="col-sm-4" style="padding-left: 47pt; padding-top: 0pt">
-                                <input type="text" class="form-control" name="pendTerakhir_I">
+                                <input type="text" class="form-control" value="{{$data->pend_ibu}}" name="pendTerakhir_I">
                               </div>
                         </div>
                       </div>
@@ -394,10 +417,10 @@
                 <div class="col-xs-7 col-md-4 text-center">
                     <div class="form-group">
                       <label class="col-sm-4 control-label" style="text-align: left; padding-left: 20pt">Assesor</label>
-
                       <div class="col-sm-8" style="padding-left: 30pt">
                           <select class="form-control select2" style="width: 100%;" name="assesor" value=" " required>
-                            <option value=" " hidden>-- Select One --</option>
+                            <option value='@if ($count==0) @else {{$isiA->assesor}} @endif' hidden>@if ($count==0)-- Select One -- @else {{$isiA->assesor}} @endif</option>
+
                             @foreach($kar as $kar)
                               <option value="{{$kar->nama}}">{{$kar->nama}}</option>
                             @endforeach
@@ -411,7 +434,7 @@
 
                       <div class="col-sm-7">
                           <select class="form-control select2" style="width: 100%;" name="J_terapi" value=" " required>
-                            <option value=" " hidden>-- Select One --</option>
+                            <option value="@if ($count==0) @else {{$isiA->id_terapi}} @endif" hidden>@if ($count==0) -- Select One -- @else {{$isiA->terapi}} @endif</option>
                             @foreach($j_terapi as $j_terapi)
                             <option value="{{$j_terapi->id_terapi}}">{{$j_terapi->terapi}}</option>
                             @endforeach
@@ -432,7 +455,7 @@
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="tgl_mulai" name="tgl_mulai_terapi" required>
+                            <input type="text" class="form-control pull-right" id="tgl_mulai" name="tgl_mulai_terapi" value="@if ($count==0) @else {{$isiA->tgl_mulai_terapi}} @endif" required>
                           </div>
                           <!-- /.input group -->
                         </div>
@@ -448,7 +471,7 @@
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="tgl_selesai" name="tgl_selesai_terapi" required>
+                            <input type="text" class="form-control pull-right" id="tgl_selesai" name="tgl_selesai_terapi" value="@if ($count==0) @else {{$isiA->tgl_selesai_terapi}} @endif" required>
                           </div>
                           <!-- /.input group -->
                         </div>
@@ -461,9 +484,9 @@
 
                       <div class="col-sm-7">
                           <select class="form-control select2" style="width: 100%;" name="status" value=" " required>
-                            <option value="{{$data->statusR}}" hidden>{{$data->statusR}}</option>
+                            <option value="{{$data->status}}" hidden>{{$data->status}}</option>
                             <option value="Asses">Asses</option>
-                            <option value="Cancle">Cancle</option>
+                            <option value="Cancel">Cancel</option>
                           </select>
                       </div>
                     </div>

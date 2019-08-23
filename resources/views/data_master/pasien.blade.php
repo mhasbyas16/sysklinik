@@ -58,7 +58,7 @@
                               </div>
                             </div>
                         </div>
-                      </div> 
+                      </div>
 
                       <div class="row">
                         <div class="col-xs-7 col-md-8 text-center">
@@ -82,7 +82,7 @@
                               </div>
                             </div>
                         </div>
-                      </div>     
+                      </div>
 
                       <div class="row">
                         <div class="col-xs-7 col-md-8 text-center">
@@ -94,7 +94,7 @@
                               </div>
                             </div>
                         </div>
-                      </div>         
+                      </div>
 
                       <div class="row">
                         <div class="col-xs-7 col-md-8 text-center">
@@ -106,7 +106,7 @@
                               </div>
                             </div>
                         </div>
-                      </div> 
+                      </div>
 
                       <div class="row">
                         <div class="col-xs-7 col-md-8 text-center">
@@ -118,7 +118,7 @@
                               </div>
                             </div>
                         </div>
-                      </div>         
+                      </div>
 
                       <div class="row">
                         <div class="col-xs-7 col-md-8 text-center">
@@ -130,7 +130,7 @@
                               </div>
                             </div>
                         </div>
-                      </div> 
+                      </div>
 
                       <div class="row">
                         <div class="col-xs-7 col-md-8 text-center">
@@ -142,8 +142,8 @@
                               </div>
                             </div>
                         </div>
-                      </div>         
-                      
+                      </div>
+
                       <div class="button">
                         <ul class="left" style="padding-left: 390pt ">
                           <button class="btn btn-success" href="#">Simpan</button>
@@ -171,46 +171,31 @@
                       <i class="fa fa-bar-chart-o"></i>
                       <h3 class="box-title">Tabel Pasien</h3>
                     </div>
-                    
+
                     <!-- /.box-header -->
                     <div class="box-body">
-                      <table id="pegawais" class="table table-bordered table-striped">
+                      <table id="pasiens" class="table table-bordered table-striped text-center">
                         <thead>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
                         </tr>
+                        <th>ID Pasien</th>
+                        <th>Nama</th>
+                        <th>Status</th>
                         </thead>
                         <tbody>
+                          @foreach($data as $data)
                         <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 4.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td> 4</td>
-                          <td>X</td>
+                          <td>{{$data->id_pasien}}</td>
+                          <td>{{$data->nama}}</td>
+                          <td>{{$data->status}}</td>
                         </tr>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 5.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td>5</td>
-                          <td>C</td>
-                        </tr>
+                          @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>ID Pasien</th>
+                          <th>Nama</th>
+                          <th>Status</th>
                         </tr>
                         </tfoot>
                       </table>

@@ -57,7 +57,7 @@
                           </div>
                       </div>
                     </div>
-                    
+
                     <div class="row">
                       <div class="col-xs-7 col-md-6 text-center">
                           <div class="form-group">
@@ -240,46 +240,34 @@
                       <i class="fa fa-bar-chart-o"></i>
                       <h3 class="box-title">Tabel Pegawai</h3>
                     </div>
-                    
+
                     <!-- /.box-header -->
                     <div class="box-body">
-                      <table id="pegawais" class="table table-bordered table-striped">
+                      <table id="pegawais" class="table table-bordered table-striped text-center">
                         <thead>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>ID Karyawan</th>
+                          <th>Nama</th>
+                          <th>Jabatan</th>
+                          <th>Alamat</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 4.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td> 4</td>
-                          <td>X</td>
-                        </tr>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 5.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td>5</td>
-                          <td>C</td>
+                          @foreach($data as $data)
+                          <td>{{$data->id_pegawai}}</td>
+                          <td>{{$data->nama}}</td>
+                          <td>{{$data->jabatan}}</td>
+                          <td>{{$data->alamat}}</td>
+                          @endforeach
                         </tr>
                         </tbody>
                         <tfoot>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                            <th>ID Karyawan</th>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Alamat</th>
                         </tr>
                         </tfoot>
                       </table>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use DB;
 use App\Helper\absensi;
+use App\Helper\idrandom;
 
 class mainmenuController extends Controller
 {
@@ -163,11 +164,8 @@ class mainmenuController extends Controller
     $id_pasien=$req->id_pasien;
     $now=date('ymd');
     //id_asses
-      $angka=range(0,9);
-      shuffle($angka);
-      $id=array_rand($angka,3);
-      $idstring=implode($id);
-      $id_asses=$now.$idstring;
+      $random=idrandom::id();
+      $id_asses=$now.$random;
 
 
     $data_HP=['status'=>$status];

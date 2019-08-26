@@ -49,7 +49,7 @@
             <a href="{{url('/jadwaleval')}}"><i class="fa fa-circle-o"></i> Jadwal Evaluasi</a></li>
         </ul>
       </li>
-      <li class="treeview {{Request::is('karyawan','data-terapis','data-terapi','data-pasien')?'active':''}}">
+      <li class="treeview {{Request::is('karyawan','karyawan/*','data-terapis','data-terapi','data-pasien')?'active':''}}">
         <a href="#">
           <i class="fa fa-th"></i>
           <span>Data Master</span>
@@ -58,7 +58,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{Request::is('karyawan')?'active':''}}">
+          <li class="{{Request::is('karyawan','karyawan/*')?'active':''}}">
            <a href="{{url('/karyawan')}}"><i class="fa fa-circle-o"></i>Karyawan</a></li>
           <li class="{{Request::is('data-terapis')?'active':''}}">
            <a href="{{url('/data-terapis')}}"><i class="fa fa-circle-o"></i> Terapis</a></li>

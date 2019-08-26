@@ -31,6 +31,9 @@ Route::get('/jadwal-terapi','mainmenuController@jadwalterapi');
 Route::get('/data-pasien','datamasterController@datapasien');
 //Data Karyawan
 Route::get('/karyawan','datamasterController@karyawan');
+Route::get('/karyawan/tambah-data/{kt}','datamasterController@karyawantambah');
+Route::get('/karyawan/edit-data/{id}','datamasterController@karyawaneditview');
+Route::post('/karyawan/add','datamasterController@karyawanadd');
 //Data terapis
 Route::get('/data-terapis','datamasterController@dataterapis');
 //Data terapi

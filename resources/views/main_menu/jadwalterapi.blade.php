@@ -71,7 +71,14 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                          @foreach($data2 as $data)
+                          <tr>
+                            <td>{{$data->jam_masuk}}</td>
+                            <td>{{$data->nama}}</td>
+                            <td>{{$data->namaP}}</td>
+                            <td>{{$data->jml_sesi}}</td>
+                          </tr>
+                          @endforeach
                         </tbody>
                         <tfoot>
                         <tr>

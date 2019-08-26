@@ -18,219 +18,6 @@
 
     <!-- Main content -->
     <section class="content">
-
-              <!-- row -->
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="box box-solid">
-
-                    <!-- begin data alat-->
-                    <form class="form-horizontal">
-
-                    <div class="box-body">
-                      <div class="row">
-                        <div class="col-xs-7 col-md-12 text-left">
-                            <div class="form-group">
-                              <label class="col-sm-12"><h3>Data Pegawai</h3><hr></label>
-                            </div>
-                        </div>
-                      </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">ID</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Pendidikan Terakhir</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Nama</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Jabatan</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">NIK</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Tanggal Masuk</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Tanggal lahir</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">No. BPJS</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Jenis Kelamin</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">NPWP</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Agama</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Intensif</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Alamat</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Transport</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">No. Telepon</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- ./col -->
-                      <div class="col-xs-7 col-md-6 text-center">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Tunjangan</label>
-
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nama_P" required>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <br>
-                    <div class="button">
-                        <ul style="padding-left: 680pt ">
-                          <button class="btn btn-success" href="#">Simpan</button>
-                          <button class="btn btn-danger" href="#">Batal</button>
-                        </ul>
-                    </div>
-                    <br>
-                    <br>
-                    </div>
-
-                    </form>
-                    <!-- /.box-body -->
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
               <!-- row -->
               <div class="row">
                 <div class="col-xs-12">
@@ -243,6 +30,12 @@
 
                     <!-- /.box-header -->
                     <div class="box-body">
+                      @if(\Session::has('alert'))
+                      <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Success!</h4>
+                        {{Session::get('alert')}}
+                      @endif
                       <table id="pegawais" class="table table-bordered table-striped text-center">
                         <thead>
                         <tr>
@@ -250,6 +43,7 @@
                           <th>Nama</th>
                           <th>Jabatan</th>
                           <th>Alamat</th>
+                          <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -259,6 +53,51 @@
                           <td>{{$data->nama}}</td>
                           <td>{{$data->jabatan}}</td>
                           <td>{{$data->alamat}}</td>
+                          <td><div class="btn-group">
+                              <a href="{{url('/karyawan/edit-data')}}/{{$data->id_pegawai}}">
+                                <button type="button" class="btn btn-success">Edit</button></a>
+                              <a href="#" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?')">
+                                <button type="button" class="btn btn-danger">Delete</button></a>
+                              <a href="#">
+                                <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#{{$data->id_pegawai}}">Info</button></a>
+                          </div></td>
+
+                          <!--modals-->
+                          <div class="modal fade" id="{{$data->id_pegawai}}">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                  <h4 class="modal-title">Info karyawan</h4>
+                                </div>
+                                <div class="modal-body">
+                                  FOTO
+                                  <pre>
+Nama          : {{$data->nama}}
+NIK           : {{$data->nik}}
+ID Karyawan   : {{$data->id_pegawai}}
+Jabatan       : {{$data->jabatan}}
+Tanggal Lahir : {{$data->tgl_lahir}}
+Jenis Kelamin : {{$data->jk}}
+Agama         : {{$data->agama}}
+No Telepon    : {{$data->tlp}}
+Alamat        : {{$data->alamat}}
+Pend Terakhir : {{$data->pend_akhir}}
+Tanggal Masuk : {{$data->tgl_masuk}}
+                                  </pre>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+
+                                </div>
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+                          <!-- /.modal -->
+
                           @endforeach
                         </tr>
                         </tbody>
@@ -268,9 +107,20 @@
                             <th>Nama</th>
                             <th>Jabatan</th>
                             <th>Alamat</th>
+                            <th>Aksi</th>
                         </tr>
                         </tfoot>
                       </table>
+                      <div class="col-xs-3">
+                      <a href="{{url('karyawan/tambah-data/karyawan')}}" class="btn btn-block btn-social btn-linkedin">
+                        <i class="fa fa-user-plus"></i>Tambah Karyawan
+                      </a>
+                    </div>
+                      <div class="col-xs-3">
+                      <a href="{{url('karyawan/tambah-data/terapis')}}" class="btn btn-block btn-social btn-google">
+                        <i class="fa fa-user-plus"></i>Tambah Terapis
+                      </a>
+                    </div>
                     </div>
                     <!-- /.box-body -->
                   </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Helper\idrandom;
+use App\Helper\agama;
 
 class datamasterController extends Controller
 {
@@ -26,6 +28,48 @@ class datamasterController extends Controller
     return view('data_master.pegawai',[
       'data'=>$data
     ]);
+  }
+
+  public function karyawantambah($kt){
+    $random=idrandom::id();
+    $date=date('ymd');
+    $agama=agama::listagama();
+    $j_terapi=DB::table('jenis_terapi')->get();
+    $jabatan=DB::table('jabatan')->get();
+    if ($kt=='terapis') {
+      $id='T'.$date.$random;
+    }elseif ($kt=='karyawan') {
+      $id='K'.$date.$random;
+    }
+    return view('data_master.pegawai_data',[
+      'id'=>$id,
+      'agama'=>$agama,
+      'j_terapi'=>$j_terapi,
+      'jabatan'=>$jabatan
+    ]);
+  }
+
+  public function karyawaneditview($id){
+    $sql=DB::table('h_pegawai')
+    ->join('d_pegawai','h_pegawai.id_pegawai','=','d_pegawai.id_pegawai')
+    ->join('jabatan','jabatan.id_jabatan','=','d_pegawai.id_jabatan')
+    ->join('jenis_terapi','jenis_terapi.id_terapi','=','d_pegawai.id_terapi')
+    ->where('h_pegawai.id_pegawai',$id);
+    $agama=agama::listagama();
+    $j_terapi=DB::table('jenis_terapi')->get();
+    $jabatan=DB::table('jabatan')->get();
+
+    if ($sql->count()==0) {
+      return redirect('/karyawan')->with('alert','gagal menemukan data!!');
+    }else{
+      $data=$sql->first();
+      return view('data_master.pegawai_data',[
+        'agama'=>$agama,
+        'j_terapi'=>$j_terapi,
+        'jabatan'=>$jabatan,
+        'data'=>$data
+      ]);
+    }
   }
 
   //terapis

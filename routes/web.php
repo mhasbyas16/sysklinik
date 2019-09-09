@@ -26,6 +26,9 @@ Route::get('/absensi','mainmenuController@absensi');
 Route::post('/absensi/{id}','mainmenuController@absensifilter');
 //jadwal terapi
 Route::get('/jadwal-terapi','mainmenuController@jadwalterapi');
+//jadwal Evaluasi
+Route::get('/jadwal-evaluasi','mainmenuController@jadwalevaluasi');
+Route::post('/jadwal-evaluasi/filter-date','mainmenuController@jadwalevaluasifilter');
 
 //Data Pasien
 Route::get('/data-pasien','datamasterController@datapasien');
@@ -33,7 +36,8 @@ Route::get('/data-pasien','datamasterController@datapasien');
 Route::get('/karyawan','datamasterController@karyawan');
 Route::get('/karyawan/tambah-data/{kt}','datamasterController@karyawantambah');
 Route::get('/karyawan/edit-data/{id}','datamasterController@karyawaneditview');
-Route::post('/karyawan/add','datamasterController@karyawanadd');
+Route::get('/karyawan/hapus-data/{id}','datamasterController@karyawandelete');
+Route::post('/pegawai/{save}','datamasterController@pegawaisave');
 //Data terapis
 Route::get('/data-terapis','datamasterController@dataterapis');
 //Data terapi

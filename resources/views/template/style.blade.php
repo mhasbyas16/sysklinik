@@ -48,7 +48,6 @@
 <link rel="stylesheet" href="{{asset('css/pict.css')}}">
 
 <script type="text/javascript">
-
     function alamatI(){
         var alamati = document.getElementById("alamatI");
         var alamatp = document.getElementById("alamatP").value;

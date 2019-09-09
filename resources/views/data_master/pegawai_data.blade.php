@@ -25,9 +25,16 @@
                   <div class="box box-solid">
 
                     <!-- begin data alat-->
-                    <form class="form-horizontal" method="post" action="{{url('karyawan/')}}/{{Request::is('karyawan/tambah-data/*')?'add':'edit'}}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="post" action="{{url('pegawai/')}}/{{Request::is('karyawan/tambah-data/*')?'add':'edit'}}" enctype="multipart/form-data">
                       {{csrf_field()}}
                     <div class="box-body">
+                      @if(\Session::has('alert'))
+                      <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Warning!</h4>
+                        {{Session::get('alert')}}
+                      </div>
+                      @endif
                       <div class="row">
                         <div class="col-xs-7 col-md-12 text-left">
                             <div class="form-group">
@@ -91,7 +98,7 @@
                             <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">NIK</label>
 
                             <div class="col-sm-6">
-                              <input type="text" class="form-control" name="nik" value="{{Request::is('karyawan/tambah-data/*')?'':$data->nik}}" required>
+                              <input type="text" class="form-control" name="nik" maxlength="13" value="{{Request::is('karyawan/tambah-data/*')?'':$data->nik}}" pattern="[0-9]+" required>
                             </div>
                           </div>
                       </div>
@@ -135,7 +142,7 @@
                             <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">No. BPJS</label>
 
                             <div class="col-sm-6">
-                              <input type="text" class="form-control" pattern="[0-9]+" name="bpjs" value="{{Request::is('karyawan/tambah-data/*')?'':$data->bpjs}}" required>
+                              <input type="text" class="form-control" pattern="[0-9]+" maxlength="13" name="bpjs" value="{{Request::is('karyawan/tambah-data/*')?'0':$data->bpjs}}">
                             </div>
                           </div>
                       </div>
@@ -161,7 +168,7 @@
                             <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">NPWP</label>
 
                             <div class="col-sm-6">
-                              <input type="text" class="form-control" name="npwp" pattern="[0-9]+" value="{{Request::is('karyawan/tambah-data/*')?'':$data->npwp}}" required>
+                              <input type="text" class="form-control" name="npwp" maxlength="13" pattern="[0-9]+" value="{{Request::is('karyawan/tambah-data/*')?'0':$data->npwp}}">
                             </div>
                           </div>
                       </div>
@@ -205,7 +212,7 @@
                             <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Alamat</label>
 
                             <div class="col-sm-6">
-                              <textarea class="form-control" id="alamatA" rows="3" name="alamat">{{Request::is('karyawan/tambah-data/*')?'':$data->alamat}}</textarea>
+                              <textarea class="form-control" id="alamatA" maxlength="100" rows="3" name="alamat">{{Request::is('karyawan/tambah-data/*')?'':$data->alamat}}</textarea>
                             </div>
                           </div>
                       </div>
@@ -228,7 +235,7 @@
 
                           <div class="col-sm-6">
                             <select class="form-control select2" style="width: 100%;" name="hakakses" value=" ">
-                              <option value="{{Request::is('karyawan/tambah-data/*')?'':'edit'}}" hidden>{{Request::is('karyawan/tambah-data/*')?'-- select One --':$data->hakakses}}</option>
+                              <option value="{{Request::is('karyawan/tambah-data/*')?'':$data->hakakses}}" hidden>{{Request::is('karyawan/tambah-data/*')?'-- select One --':$data->hakakses}}</option>
                               <option value="super user">super user</option>
                               <option value="admin">admin</option>
                               <option value="user">user</option>
@@ -247,15 +254,18 @@
                                 <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-default btn-file">
-                                            Browse… <input type="file" id="imgInp" value="{{Request::is('karyawan/tambah-data/*')?'':$data->foto}}" name="foto">
+                                            Browse… <input type="file" id="imgInp" name="foto">
                                         </span>
                                     </span>
-                                    <input type="text" class="form-control" name="Nfoto" readonly>
+                                    <input type="text" class="form-control" name="Nfoto" value="{{Request::is('karyawan/tambah-data/*')?' ':$data->foto}}" readonly>
                                 </div>
-                                <img id='img-upload' />
+                                <img src="{{asset('foto/pegawai')}}/{{Request::is('karyawan/tambah-data/*')?'':$data->foto}}" id='img-upload' />
                           </div>
                       </div>
                       <!-- ./col -->
+                    </div>
+                    <div class="col-xs-7 col-md-5 text-center">
+                      <label class="col-sm-5 control-label" style="text-align: left">*Foto berformat (png,jpg,jpeg) max 1MB</label>
                     </div>
                   </div>
 
@@ -272,8 +282,11 @@
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Gaji</label>
 
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" pattern="[0-9]+" id="gaji" name="gaji" value="{{Request::is('karyawan/tambah-data/*')?'':$data->gaji}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" id="gaji" maxlength="15" name="gaji" value="{{Request::is('karyawan/tambah-data/*')?'':$data->gaji}}" required>
                           </div>
                         </div>
                     </div>
@@ -283,9 +296,11 @@
                     <div class="col-xs-7 col-md-6 text-center">
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Observasi</label>
-
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" name="observasi" pattern="[0-9]+" id='observasi' value="{{Request::is('karyawan/tambah-data/*')?'':$data->observasi}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" maxlength="15" name="observasi" id='observasi' value="{{Request::is('karyawan/tambah-data/*')?'':$data->observasi}}" required>
                           </div>
                         </div>
                     </div>
@@ -293,9 +308,11 @@
                     <div class="col-xs-7 col-md-6 text-center">
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Asses</label>
-
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" name="Asses" pattern="[0-9]+" id="asses" value="{{Request::is('karyawan/tambah-data/*')?'':$data->asses}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" name="Asses" maxlength="15" id="asses" value="{{Request::is('karyawan/tambah-data/*')?'':$data->asses}}" required>
                           </div>
                         </div>
                     </div>
@@ -305,9 +322,11 @@
                     <div class="col-xs-7 col-md-6 text-center">
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Konsumsi</label>
-
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" name="konsumsi" pattern="[0-9]+" id="konsumsi" value="{{Request::is('karyawan/tambah-data/*')?'':$data->konsumsi}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" maxlength="15" name="konsumsi" id="konsumsi" value="{{Request::is('karyawan/tambah-data/*')?'':$data->konsumsi}}" required>
                           </div>
                         </div>
                     </div>
@@ -315,9 +334,11 @@
                     <div class="col-xs-7 col-md-6 text-center">
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Transport</label>
-
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" name="transport" pattern="[0-9]+" id="transport" value="{{Request::is('karyawan/tambah-data/*')?'':$data->transport}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" maxlength="15" name="transport" id="transport" value="{{Request::is('karyawan/tambah-data/*')?'':$data->transport}}" required>
                           </div>
                         </div>
                     </div>
@@ -327,9 +348,11 @@
                     <div class="col-xs-7 col-md-6 text-center">
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Bonus</label>
-
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" name="bonus" pattern="[0-9]+" id="bonus" value="{{Request::is('karyawan/tambah-data/*')?'':$data->bonus}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" maxlength="15" name="bonus" id="bonus" value="{{Request::is('karyawan/tambah-data/*')?'':$data->bonus}}" required>
                           </div>
                         </div>
                     </div>
@@ -337,9 +360,11 @@
                     <div class="col-xs-7 col-md-6 text-center">
                         <div class="form-group">
                           <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Lembur</label>
-
-                          <div class="col-sm-6">
-                            <input type="text" class="form-control" id="lembur" name="lembur" pattern="[0-9]+" value="{{Request::is('karyawan/tambah-data/*')?'':$data->lembur}}" required>
+                          <div class="col-sm-1">
+                            <label class="col-sm-5 control-label" style="text-align: left; padding-left: 20pt">Rp.</label>&nbsp;
+                          </div>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" maxlength="15" id="lembur" name="lembur" value="{{Request::is('karyawan/tambah-data/*')?'':$data->lembur}}" required>
                           </div>
                         </div>
                     </div>

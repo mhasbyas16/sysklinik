@@ -28,6 +28,13 @@
               {{csrf_field()}}
               <input type="text" value="{{$id}}" name="id_pasien" hidden/>
             <div class="box-body">
+              @if(\Session::has('alert'))
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Warning!</h4>
+                {{Session::get('alert')}}
+              </div>
+              @endif
               <div class="row">
                       <div class="col-xs-7 col-md-12 text-left">
                           <div class="form-group">
@@ -155,8 +162,9 @@
                       <div class="col-sm-9" style="padding-left: 30pt">
                           <select class="form-control select2" style="width: 100%;" name="agama" value=" ">
                             <option value="{{$data->agama}}" hidden>{{$data->agama}}</option>
-                            <option value="I">Islam</option>
-                            <option value="KP">Kristen Protestan</option>
+                            @foreach($agama as $isi)
+                            <option value="{{$isi}}">{{$isi}}</option>
+                            @endforeach
                           </select>
                       </div>
                     </div>
@@ -186,13 +194,16 @@
                                       Browse… <input type="file" id="imgInp" value=" " name="foto">
                                   </span>
                               </span>
-                              <input type="text" class="form-control" name="Nfoto" readonly>
+                              <input type="text" class="form-control" value="{{$data->foto}}" name="Nfoto" readonly>
                           </div>
-                          <img id='img-upload' />
+                          <img id='img-upload' src="{{asset('foto/pasien')}}/{{$data->foto}}" />
                       </div>
                     </div>
                 </div>
                 <!-- ./col -->
+                <div class="col-xs-7 col-md-5 text-center">
+                  <label class="col-sm-5 control-label" style="text-align: left">*Foto berformat (png,jpg,jpeg) max 1MB</label>
+                </div>
               </div>
               <!-- end data pasien-->
 
@@ -237,8 +248,9 @@
                               <div class="col-sm-9" style="padding-left: 30pt">
                                   <select class="form-control select2" style="width: 100%;" name="agama_A" value=" ">
                                     <option value="{{$data->agama_ayah}}" hidden>{{$data->agama_ayah}}</option>
-                                    <option value="I">Islam</option>
-                                    <option value="KP">Kristen Protestan</option>
+                                    @foreach($agama as $isi)
+                                    <option value="{{$isi}}">{{$isi}}</option>
+                                    @endforeach
                                   </select>
                               </div>
                             </div>
@@ -344,8 +356,9 @@
                               <div class="col-sm-9" style="padding-left: 30pt">
                                   <select class="form-control select2" style="width: 100%;" name="agama_I" value=" ">
                                     <option value="{{$data->agama_ibu}}" hidden>{{$data->agama_ibu}}</option>
-                                    <option value="I">Islam</option>
-                                    <option value="KP">Kristen Protestan</option>
+                                    @foreach($agama as $isi)
+                                    <option value="{{$isi}}">{{$isi}}</option>
+                                    @endforeach
                                   </select>
                               </div>
                             </div>
@@ -485,8 +498,9 @@
                       <div class="col-sm-7">
                           <select class="form-control select2" style="width: 100%;" name="status" value=" " required>
                             <option value="{{$data->status}}" hidden>{{$data->status}}</option>
-                            <option value="Asses">Asses</option>
-                            <option value="Cancel">Cancel</option>
+                            @foreach($status as $isi)
+                            <option value="{{$isi}}">{{$isi}}</option>
+                            @endforeach
                           </select>
                       </div>
                     </div>

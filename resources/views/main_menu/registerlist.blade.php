@@ -43,7 +43,7 @@
 
                     <!-- /.box-header -->
                     <div class="box-body">
-                    <form method="post" action="{{url('/register-lis/filter-date')}}">
+                    <form method="post" action="{{url('/register-list/filter-date')}}">
                       {{csrf_field()}}
                       <table border="0" cellspacing="5" cellpadding="5">
                         <tbody><tr>
@@ -65,9 +65,8 @@
                             </div>
                         </td>
                         <td><select class="form-control" name="pilih" value=" " required>
+                          <option value="tgl_daftar">Tanggal Daftar</option>
                           <option value="tgl_asses">Tanggal Asses</option>
-                          <option value="tgl_mulai_terapi">Tanggal Mulai Terapi</option>
-                          <option value="tgl_selesai_terapi">Tanggal Selesai Terapi</option>
                         </select></td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td><button type="submit" class="btn btn-information"><i class="fa fa-search"></i></button></td>
@@ -83,11 +82,10 @@
                     <tr>
                       <th>Nama</th>
                       <th>ID Asses</th>
+                      <th>TGL Daftar</th>
                       <th>TGL Asses</th>
                       <th>ID Terapi</th>
                       <th>Assesor</th>
-                      <th>TGL Mulai Terapi</th>
-                      <th>TGL Selesai Terapi</th>
                       <th>Status</th>
                       <th>Aksi</th>
                     </tr>
@@ -97,11 +95,10 @@
                       <tr>
                         <td>{{$data->nama}}</td>
                         <td>{{$data->id_asses}}</td>
+                        <td>{{$data->tgl_daftar}}</td>
                         <td>{{$data->tgl_asses}}</td>
                         <td>{{$data->id_terapi}}</td>
                         <td>{{$data->assesor}}</td>
-                        <td>{{$data->tgl_mulai_terapi}}</td>
-                        <td>{{$data->tgl_selesai_terapi}}</td>
                         <td><a href="{{url('/register-list')}}/{{$data->idpasien}}">{{$data->status}}</a></td>
                         <td><div class="btn-group">
                           @if($data->status=='Cancel')
@@ -115,15 +112,14 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                      <th>Nama</th>
-                      <th>ID Asses</th>
-                      <th>TGL Asses</th>
-                      <th>ID Terapi</th>
-                      <th>Assesor</th>
-                      <th>TGL Mulai Terapi</th>
-                      <th>TGL Selesai Terapi</th>
-                      <th>Status</th>
-                      <th>Aksi</th>
+                        <th>Nama</th>
+                        <th>ID Asses</th>
+                        <th>TGL Daftar</th>
+                        <th>TGL Asses</th>
+                        <th>ID Terapi</th>
+                        <th>Assesor</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                     </tfoot>
                   </table>

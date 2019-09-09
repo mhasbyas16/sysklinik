@@ -115,40 +115,30 @@
                       <table id="pegawais" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>Nama</th>
+                          <th>Hari</th>
+                          <th>Waktu</th>
+                          <th>Deskripsi</th>
+                          <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 4.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td> 4</td>
-                          <td>X</td>
-                        </tr>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 5.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td>5</td>
-                          <td>C</td>
-                        </tr>
+                          @foreach ($rterapis as $isi)
+                          <tr>
+                            <td>{{$isi->nama}}</td>
+                            <td>{{$isi->hari}}</td>
+                            <td>{{$isi->waktu}}</td>
+                            <td>{{$isi->deskripsi}}</td>
+                          </tr>
+                          @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>Nama</th>
+                          <th>Hari</th>
+                          <th>Waktu</th>
+                          <th>Deskripsi</th>
+                          <th>Aksi</th>
                         </tr>
                         </tfoot>
                       </table>
@@ -176,40 +166,30 @@
                       <table id="pegawais" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>Nama</th>
+                          <th>Hari</th>
+                          <th>Waktu</th>
+                          <th>Deskripsi</th>
+                          <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 4.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td> 4</td>
-                          <td>X</td>
-                        </tr>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 5.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td>5</td>
-                          <td>C</td>
-                        </tr>
+                          @foreach ($rpasien as $isi)
+                          <tr>
+                            <td>{{$isi->nama}}</td>
+                            <td>{{$isi->hari}}</td>
+                            <td>{{$isi->waktu}}</td>
+                            <td>{{$isi->deskripsi}}</td>
+                          </tr>
+                          @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>Nama</th>
+                          <th>Hari</th>
+                          <th>Waktu</th>
+                          <th>Deskripsi</th>
+                          <th>Aksi</th>
                         </tr>
                         </tfoot>
                       </table>

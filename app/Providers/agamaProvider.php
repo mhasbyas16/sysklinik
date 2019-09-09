@@ -13,7 +13,7 @@ class agamaProvider extends ServiceProvider
      */
     public function register()
     {
-        require app_path().'\Helper\agama.php';
+        require app_path().'/Helper/agama.php';
     }
 
     /**

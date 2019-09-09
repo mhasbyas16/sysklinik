@@ -35,6 +35,13 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h4><i class="icon fa fa-check"></i> Success!</h4>
                         {{Session::get('alert')}}
+                      </div>
+                      @elseif (\Session::has('alertwarn'))
+                      <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Success!</h4>
+                        {{Session::get('alertwarn')}}
+                      </div>
                       @endif
                       <table id="pegawais" class="table table-bordered table-striped text-center">
                         <thead>
@@ -47,8 +54,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
                           @foreach($data as $data)
+                        <tr>
                           <td>{{$data->id_pegawai}}</td>
                           <td>{{$data->nama}}</td>
                           <td>{{$data->jabatan}}</td>
@@ -56,7 +63,7 @@
                           <td><div class="btn-group">
                               <a href="{{url('/karyawan/edit-data')}}/{{$data->id_pegawai}}">
                                 <button type="button" class="btn btn-success">Edit</button></a>
-                              <a href="#" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?')">
+                              <a href="{{url('/karyawan/hapus-data')}}/{{$data->id_pegawai}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?')">
                                 <button type="button" class="btn btn-danger">Delete</button></a>
                               <a href="#">
                                 <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#{{$data->id_pegawai}}">Info</button></a>
@@ -72,7 +79,10 @@
                                   <h4 class="modal-title">Info karyawan</h4>
                                 </div>
                                 <div class="modal-body">
-                                  FOTO
+                                  <div class="text-center col-sm-4">
+                                    <img src="{{asset('foto/pegawai')}}/{{$data->foto}}" alt="{{$data->nama}}" style="width:100%"/>
+                                  </div>
+                                  <div class="col-sm-8">
                                   <pre>
 Nama          : {{$data->nama}}
 NIK           : {{$data->nik}}
@@ -85,7 +95,10 @@ No Telepon    : {{$data->tlp}}
 Alamat        : {{$data->alamat}}
 Pend Terakhir : {{$data->pend_akhir}}
 Tanggal Masuk : {{$data->tgl_masuk}}
+NO. BPJS      : {{$data->bpjs}}
+NO. NPWP      : {{$data->npwp}}
                                   </pre>
+                                </div>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -97,9 +110,8 @@ Tanggal Masuk : {{$data->tgl_masuk}}
                             <!-- /.modal-dialog -->
                           </div>
                           <!-- /.modal -->
-
-                          @endforeach
                         </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -114,11 +126,6 @@ Tanggal Masuk : {{$data->tgl_masuk}}
                       <div class="col-xs-3">
                       <a href="{{url('karyawan/tambah-data/karyawan')}}" class="btn btn-block btn-social btn-linkedin">
                         <i class="fa fa-user-plus"></i>Tambah Karyawan
-                      </a>
-                    </div>
-                      <div class="col-xs-3">
-                      <a href="{{url('karyawan/tambah-data/terapis')}}" class="btn btn-block btn-social btn-google">
-                        <i class="fa fa-user-plus"></i>Tambah Terapis
                       </a>
                     </div>
                     </div>

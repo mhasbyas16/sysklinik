@@ -41,7 +41,8 @@ $(function () {
       {extend:'pdfHtml5',
        title:'Assesment Export'},
        'print'],
-       select:true
+       select:true,
+        "pageLength": 20
   })
 })
 
@@ -134,5 +135,5 @@ function formatRupiah(angka, prefix)
   }
 
   rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-  return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+  return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
 }

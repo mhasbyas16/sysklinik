@@ -14,6 +14,16 @@ class agama{
 
     return $agama;
   }
+  public static function liststatus(){
+    $agama=[
+      'Daftar',
+      'Cancel',
+      'Asses',
+      'Pasien'
+    ];
+
+    return $agama;
+  }
 
 }
 

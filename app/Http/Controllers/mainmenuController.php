@@ -8,6 +8,8 @@ use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use DB;
 use App\Helper\absensi;
 use App\Helper\idrandom;
+use App\Helper\agama;
+use File;
 
 class mainmenuController extends Controller
 {
@@ -52,12 +54,53 @@ class mainmenuController extends Controller
     ]);
   }
 
+//jadwal Evaluasi
+public function jadwalevaluasi(){
+  $awal=date('Y-m-01');
+  $akhir=date('Y-m-31');
+  $isi=DB::table('h_pasien')
+  ->select('h_pasien.id_pasien as idpasien','h_pasien.status','d_pasien.nama'
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 3 MONTH) as tgl_eval1')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 6 MONTH) as tgl_eval2')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 9 MONTH) as tgl_eval3')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 1 YEAR) as tgl_eval4')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 1-3 YEAR_MONTH) as tgl_eval5')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 1-5 YEAR_MONTH) as tgl_eval6'),'d_pasien.tgl_daftar','assessment.*')
+  ->leftJoin('assessment','h_pasien.id_pasien','=','assessment.id_pasien')
+  ->join('d_pasien','d_pasien.id_pasien','=','h_pasien.id_pasien')->whereBetween('d_pasien.tgl_daftar',[$awal,$akhir])->get();
+
+
+  return view ('main_menu.jadwaleval',[
+    'isi'=>$isi]);
+}
+public function jadwalevaluasifilter(Request $req){
+  $min=$req->min;
+  $max=$req->max;
+  $pilih=$req->pilih;
+  $isi=DB::table('h_pasien')
+  ->select('h_pasien.id_pasien as idpasien','h_pasien.status','d_pasien.nama'
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 3 MONTH) as tgl_eval1')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 6 MONTH) as tgl_eval2')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 9 MONTH) as tgl_eval3')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 1 YEAR) as tgl_eval4')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 1-3 YEAR_MONTH) as tgl_eval5')
+  ,DB::raw('DATE_ADD(assessment.tgl_asses, INTERVAL 1-5 YEAR_MONTH) as tgl_eval6'),'d_pasien.tgl_daftar','assessment.*')
+  ->leftJoin('assessment','h_pasien.id_pasien','=','assessment.id_pasien')
+  ->join('d_pasien','d_pasien.id_pasien','=','h_pasien.id_pasien')->whereBetween($pilih,[$min,$max])->get();
+
+
+  return view ('main_menu.jadwaleval',[
+    'isi'=>$isi]);
+}
+
 //Register List
   public function registerlist(){
+    $awal=date('Y-m-01');
+    $akhir=date('Y-m-31');
     $isi=DB::table('h_pasien')
-    ->select('h_pasien.id_pasien as idpasien','h_pasien.status','d_pasien.nama','assessment.*')
+    ->select('h_pasien.id_pasien as idpasien','h_pasien.status','d_pasien.nama','d_pasien.tgl_daftar','assessment.*')
     ->leftJoin('assessment','h_pasien.id_pasien','=','assessment.id_pasien')
-    ->join('d_pasien','d_pasien.id_pasien','=','h_pasien.id_pasien')->get();
+    ->join('d_pasien','d_pasien.id_pasien','=','h_pasien.id_pasien')->whereBetween('d_pasien.tgl_daftar',[$awal,$akhir])->get();
 
 
     return view ('main_menu.registerlist',[
@@ -69,7 +112,7 @@ class mainmenuController extends Controller
     $max=$req->max;
     $pilih=$req->pilih;
     $isi=DB::table('h_pasien')
-    ->select('h_pasien.id_pasien as idpasien','h_pasien.status','d_pasien.nama','assessment.*')
+    ->select('h_pasien.id_pasien as idpasien','h_pasien.status','d_pasien.nama','d_pasien.tgl_daftar','assessment.*')
     ->leftJoin('assessment','h_pasien.id_pasien','=','assessment.id_pasien')
     ->join('d_pasien','d_pasien.id_pasien','=','h_pasien.id_pasien')->whereBetween($pilih,[$min,$max])->get();
 
@@ -79,6 +122,8 @@ class mainmenuController extends Controller
   }
 
   public function registerlistdelete($id){
+    $data=DB::table('d_pasien')->select('foto')->where('id_pasien',$id)->first();
+    File::delete('foto/pasien/'.$data->foto);
     DB::table('h_pasien')->where('id_pasien',$id)->delete();
 
     return redirect ('/register-list')->with('alert','Sukses Menghapus Data');
@@ -97,6 +142,8 @@ class mainmenuController extends Controller
     $bulan=$tgl_lahir[1];
     $tahun_now=date('Y');
     $bulan_now=date('m');
+    $agama=agama::listagama();
+    $status=agama::liststatus();
     if ($bulan_now>=$bulan) {
       $diff=$tahun_now-$tahun;
     }else{
@@ -119,12 +166,15 @@ class mainmenuController extends Controller
       'id'=>$id,
       'umur'=>$umur,
       'isiA'=>$isiA,
-      'count'=>$count
+      'count'=>$count,
+      'agama'=>$agama,
+      'status'=>$status
     ]);
   }
 
   public function registerlistupdate(request $req){
     //pasien
+    $id_pasien=$req->id_pasien;
     $nama_P=$req->nama_P;
     $jk=$req->jk;
     $alamat_P=$req->alamat_P;
@@ -133,9 +183,25 @@ class mainmenuController extends Controller
     $umur=$req->umur;
     $notelp_P=$req->notelp_P;
     $tanggal_daftar=$req->tanggal_daftar;
-    $Nfoto=$req->Nfoto;
     $agama=$req->agama;
     $keluhan=$req->keluhan;
+    //foto
+    $foto=$req->file('foto');
+    $size=$foto->getSize();
+    $tipe=$foto->getClientOriginalExtension();
+    if ($size>=1024000) {
+      return redirect('/register-list'.'/'.$id_pasien)->with('alert','file foto tidak boleh melebihi dari 1MB');
+    }
+    $Nfoto=$id_pasien;
+    $idfoto=$req->$Nfoto;
+      if ($idfoto==$id_pasien) {
+
+      }elseif($idfoto!=$id_pasien) {
+          $data=DB::table('d_pasien')->select('foto')->where('id_pasien',$id_pasien)->first();
+          File::delete('foto/pasien/'.$data->foto);
+          $pict=$req->file('foto');
+          $pict->move(public_path().'/foto/pasien',$Nfoto);
+      }
     //Ayah
     $nama_A=$req->nama_A;
     $nik_A=$req->nik_A;
@@ -161,7 +227,6 @@ class mainmenuController extends Controller
     $tgl_selesai_terapi=$req->tgl_selesai_terapi;
     $status=$req->status;
 
-    $id_pasien=$req->id_pasien;
     $now=date('ymd');
     //id_asses
       $random=idrandom::id();
@@ -247,11 +312,15 @@ class mainmenuController extends Controller
           'firstDay' => 1
          ]);
 
-         //jadwal tabel hari curl_init
+         //jadwal tabel hari ini
+         $rterapis=DB::table('request_jadwal')->join('d_pegawai','d_pegawai.id_pegawai','=','request_jadwal.id_terapis')->get();
+         $rpasien=DB::table('request_jadwal')->join('d_pegawai','d_pegawai.id_pegawai','=','request_jadwal.id_pasien')->get();
          $data2=$sql->where('jadwal.tgl',date('Y-m-d'))->orderBY('jadwal.jam_masuk','asc')->get();
 
       return view('main_menu.jadwalterapi', compact('calendar'),[
-        'data2'=>$data2
+        'data2'=>$data2,
+        'rterapis'=>$rterapis,
+        'rpasien'=>$rpasien
       ]);
   }
 }

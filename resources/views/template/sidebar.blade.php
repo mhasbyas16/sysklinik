@@ -30,7 +30,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
       </li>
-      <li class="treeview {{Request::is('register-list','register-list/*','absensi','absensi/*','jadwal-terapi','jadwaleval')?'active':''}}">
+      <li class="treeview {{Request::is('register-list','register-list/*','absensi','absensi/*','jadwal-terapi','jadwal-evaluasi','jadwal-evaluasi/*')?'active':''}}">
         <a href="#">
           <i class="glyphicon glyphicon-inbox "></i>
           <span>Main Menu</span>
@@ -45,8 +45,8 @@
             <a href="{{url('/absensi')}}"><i class="fa fa-circle-o"></i> Absensi</a></li>
           <li class="{{Request::is('jadwal-terapi')?'active':''}}">
             <a href="{{url('/jadwal-terapi')}}"><i class="fa fa-circle-o"></i> Jadwal Terapi</a></li>
-          <li class="{{Request::is('jadwaleval')?'active':''}}">
-            <a href="{{url('/jadwaleval')}}"><i class="fa fa-circle-o"></i> Jadwal Evaluasi</a></li>
+          <li class="{{Request::is('jadwal-evaluasi','jadwal-evaluasi/*')?'active':''}}">
+            <a href="{{url('/jadwal-evaluasi')}}"><i class="fa fa-circle-o"></i> Jadwal Evaluasi</a></li>
         </ul>
       </li>
       <li class="treeview {{Request::is('karyawan','karyawan/*','data-terapis','data-terapi','data-pasien')?'active':''}}">

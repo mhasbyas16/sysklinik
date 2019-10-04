@@ -32,6 +32,8 @@ Route::post('/jadwal-evaluasi/filter-date','mainmenuController@jadwalevaluasifil
 
 //Data Pasien
 Route::get('/data-pasien','datamasterController@datapasien');
+Route::get('/data-pasien/view/{id}','datamasterController@datapasienview');
+Route::post('/data-pasien/update','datamasterController@datapasienupdate');
 //Data Karyawan
 Route::get('/karyawan','datamasterController@karyawan');
 Route::get('/karyawan/tambah-data/{kt}','datamasterController@karyawantambah');
@@ -42,3 +44,5 @@ Route::post('/pegawai/{save}','datamasterController@pegawaisave');
 Route::get('/data-terapis','datamasterController@dataterapis');
 //Data terapi
 Route::get('/data-terapi','datamasterController@dataterapi');
+Route::get('/data-terapi/delete/{id}','datamasterController@dataterapidelete');
+Route::post('/data-terapi/add','datamasterController@dataterapiadd');

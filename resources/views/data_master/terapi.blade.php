@@ -26,12 +26,13 @@
                   <div class="box box-solid">
 
                     <!-- begin data alat-->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="{{url('/data-terapi/add')}}" enctype="multipart/form-data">
+                      {{csrf_field()}}
                     <div class="box-body">
                       <div class="row">
                         <div class="col-xs-7 col-md-12 text-left">
                             <div class="form-group">
-                              <label class="col-sm-12"><h3>Data Jenis Terapi</h3><hr></label>
+                              <label class="col-sm-12"><h3>Tambah Jenis Terapi</h3><hr></label>
                             </div>
                         </div>
                       </div>
@@ -42,7 +43,7 @@
                               <label class="col-sm-4 control-label" style="text-align: left; padding-left: 40pt">Kode Jenis Terapi</label>
 
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" name="nama_P" required>
+                                <input type="text" class="form-control" name="kode_jenis" required>
                               </div>
                             </div>
                         </div>
@@ -54,7 +55,7 @@
                               <label class="col-sm-4 control-label" style="text-align: left; padding-left: 40pt">Jenis Terapi</label>
 
                               <div class="col-sm-7">
-                                  <input type="text" class="form-control" id="alamatP" name="alamat"></textarea>
+                                  <input type="text" class="form-control" id="alamatP" name="nama_jenis"></textarea>
                               </div>
                             </div>
                         </div>
@@ -95,6 +96,7 @@
                         <tr>
                           <th>ID Terapi</th>
                           <th>Nama Terapi</th>
+                          <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -102,6 +104,7 @@
                         <tr>
                           <td>{{$data->id_terapi}}</td>
                           <td style="text-align:left">{{$data->terapi}}</td>
+                          <td><a href="{{url('/data-terapi/delete')}}/{{$data->id_terapi}}" onclick="return confirm('apakah anda yakin akan menghapus data ini')"><button class="btn btn-danger" href="#">Delete</button></a></td>
                         </tr>
                           @endforeach
                         </tbody>
@@ -109,6 +112,7 @@
                           <tr>
                             <th>ID Terapi</th>
                             <th>Nama Terapi</th>
+                            <th>Aksi</th>
                           </tr>
                         </tfoot>
                       </table>

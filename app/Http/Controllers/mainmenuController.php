@@ -186,6 +186,9 @@ public function jadwalevaluasifilter(Request $req){
     $agama=$req->agama;
     $keluhan=$req->keluhan;
     //foto
+    if ($req->file('foto')=='') {
+      $Nfoto=$id_pasien;
+    }else{
     $foto=$req->file('foto');
     $size=$foto->getSize();
     $tipe=$foto->getClientOriginalExtension();
@@ -202,6 +205,7 @@ public function jadwalevaluasifilter(Request $req){
           $pict=$req->file('foto');
           $pict->move(public_path().'/foto/pasien',$Nfoto);
       }
+    }
     //Ayah
     $nama_A=$req->nama_A;
     $nik_A=$req->nik_A;
